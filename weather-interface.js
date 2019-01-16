@@ -24,15 +24,19 @@ $(document).ready(function() {
     console.log(userGIF);
     $('#search').val(" ");
     $.ajax({
-      url: `http://api.giphy.com/v1/gifs/search?q=${userGIF}&api_key=HJqZrjEleqITeKjpInZ3CFkyLKdaWYdY&limit=1`,
+      url: `http://api.giphy.com/v1/gifs/search?q=${userGIF}&api_key=HJqZrjEleqITeKjpInZ3CFkyLKdaWYdY&limit=2`,
       type: 'GET',
       data: {
         format: 'json'
       },
       success: function(response) {
-        $('.GIFpic').prepend();
+        let GIFurl = response.data[0].images.original.url
+        $('.GIFpic').prepend(`<img src=${GIFurl}>`);
+
         $('.GIFtext').text(`cool`);
         console.log(response)
+        console.log(response.data[0].images.original.url)
+        console.log(response.data[1].images.original.url)
       },
       error: function() {
         $('#GIFerrors').text("There was an error processing your request. Please try again.");
