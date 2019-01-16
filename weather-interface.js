@@ -1,10 +1,11 @@
+
 $(document).ready(function() {
 
   $('#weatherLocation').click(function() {
      let city = $('#location').val();
      $('#location').val("");
      $.ajax({
-       url: `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=57a2e76a6093ce56d6a4adb5201eeefd`,
+       url: `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${open_weather}`,
        type: 'GET',
        data: {
          format: 'json'
@@ -24,7 +25,7 @@ $(document).ready(function() {
     console.log(userGIF);
     $('#search').val(" ");
     $.ajax({
-      url: `http://api.giphy.com/v1/gifs/search?q=${userGIF}&api_key=HJqZrjEleqITeKjpInZ3CFkyLKdaWYdY&limit=2`,
+      url: `http://api.giphy.com/v1/gifs/search?q=${userGIF}&api_key=${giphy_key}&limit=2`,
       type: 'GET',
       data: {
         format: 'json'
